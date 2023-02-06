@@ -24,8 +24,7 @@ model Post {
   id         Int       @id @default(autoincrement())
   userId     String
   content    String
-  created_at DateTime
-  updated_at DateTime
+  created_at DateTime  @default(now())
   Comment    Comment[]
   user       User      @relation(fields: [userId], references: [id])
 }
@@ -35,8 +34,7 @@ model Comment {
   userId     String
   postId     Int
   content    String
-  created_at DateTime
-  updated_at DateTime
+  created_at DateTime @default(now())
   post       Post     @relation(fields: [postId], references: [id])
   user       User     @relation(fields: [userId], references: [id])
 }
