@@ -1,6 +1,11 @@
+<script lang="ts">
+    import type {ActionData} from './$types';
+    export let form: ActionData
+</script>
+
 <h1>ログイン画面</h1>
 {#if form?.message}
-    {form.message}
+    <p class="error">{form.message}</p>
 {/if}
 <form method="POST" action="?/login">
     <label>名前:
@@ -12,4 +17,9 @@
     </label>
     <button>ログイン</button>
 </form>
+<style>
+    .error {
+        color: red;
+    }
+</style>
 
