@@ -1,9 +1,8 @@
 import { db } from "$lib/prisma";
-import type { Handle } from "@sveltejs/kit";
+import type { Handle, HandleServerError } from "@sveltejs/kit";
 
 export const handle: Handle = async ({ event, resolve }) => {
     const session = event.cookies.get('session');
-    
     if (!session) {
         return await  resolve(event)
     }
@@ -20,4 +19,10 @@ export const handle: Handle = async ({ event, resolve }) => {
         }
     }
     return await resolve(event)
+}
+
+export const handleError: HandleServerError = ({event}) => {
+    return {
+      message: event.url.pathname + "で500エラーが発生！",
+    };
 }
