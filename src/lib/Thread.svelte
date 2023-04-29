@@ -1,33 +1,24 @@
 <script lang="ts">
+  import Card, {
+    Content,
+    Actions,
+  } from '@smui/card';
+  import { Label } from '@smui/button';
     export let id : number;
     export let content: string;
 </script>
 
-<div class="thread">
-    <div class="thread-content">
-      <h2>{content}</h2>
-      <a href="detail/{id}">スレッドの詳細を見る</a>
-    </div>
+<div class="card-container block bg-white shadow-md rounded-md p-4 transition duration-300 hover:bg-gray-100 mb-4">
+  <Card width="800px">
+    <Content class="text-lg font-bold mb-2">{content}</Content>
+    <a href={`detail/${id}`}>
+      <Actions fullBleed>
+        <Label>スレッドの詳細を見る</Label>
+        <i class="material-icons" aria-hidden="true">→</i>
+      </Actions>
+    </a>
+  </Card>
 </div>
 
-<style> 
-.thread {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 10px auto;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
 
-.thread-content {
-  width: 100%;
-  margin-left: 10px;
-}
-.thread-content a {
-  display: inline-block;
-  font-size: 14px;
-  color: blue;
-  text-decoration: none;
-}
-</style>
 

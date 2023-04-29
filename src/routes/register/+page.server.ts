@@ -8,9 +8,14 @@ export const actions: Actions = {
         const data = await request.formData();
         const name = data.get("name");
         const password = data.get("password");
+        const confirmPassword = data.get("password_confirm");
 
         if (typeof name !== "string" ||typeof password !== "string" || !name || !password) {
             return fail(400, { message: "名前・パスワードは必須です。" })
+        }
+
+        if (password !== confirmPassword) {
+            return fail(400, { message: "パスワードと確認用パスワードが一致していません。"})
         }
 
         const user = await db.user.findUnique({
