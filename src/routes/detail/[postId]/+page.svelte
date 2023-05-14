@@ -48,10 +48,3 @@
       <button type="submit" class="w-1/12 bg-blue-500 hover:bg-blue-700 text-white py-2 px-2 rounded">送信</button>
     </form>
   </main>
-  
-
-<style>
-    .error {
-        color: red;
-    }
-</style>
